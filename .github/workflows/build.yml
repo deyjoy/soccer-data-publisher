@@ -18,7 +18,6 @@ jobs:
       matrix:
         service:
           - service-discovery
-          - api-gateway
           # Add more services here as needed
 
     steps:
