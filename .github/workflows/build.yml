@@ -26,6 +26,8 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+        working-directory: ./service-discovery
 
       - name: Test with Maven
         run: mvn test
+        working-directory: ./service-discovery
