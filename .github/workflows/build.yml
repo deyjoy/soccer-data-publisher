@@ -14,6 +14,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        service:
+          - service-discovery
+          - api-gateway
+          # Add more services here as needed
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -27,13 +34,13 @@ jobs:
       - name: List files in root directory
         run: ls -la
 
-      - name: List files in service-discovery directory
-        run: ls -la service-discovery
+      - name: List files in ${{ matrix.service }} directory
+        run: ls -la ${{ matrix.service }}
 
       - name: Build with Maven
         run: mvn clean install
-        working-directory: ./service-discovery
+        working-directory: ./${{ matrix.service }}
 
       - name: Test with Maven
         run: mvn test
-        working-directory: ./service-discovery
+        working-directory: ./${{ matrix.service }}
