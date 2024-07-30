@@ -18,7 +18,7 @@ jobs:
       matrix:
         service:
           - service-discovery
-          # Add more services here as needed
+          - api-gateway
 
     steps:
       - name: Checkout code
